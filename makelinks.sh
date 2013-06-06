@@ -8,14 +8,16 @@
 dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 echo $dir
 
-# get collection of files in dir
+# get dot files in dir
 dotfiles=.[^.]*
 
 # create symlinks from .dotfiles/ to ~ 
 for file in $dotfiles; do
-    if [ "$file" != ".git" ] 
-    then
-	echo "symlinking $file"
-	ln -s $dir/$file ~/.$file
-    fi
+
+    [[ "$file" = ".git" ]] && continue
+    [[ "$file" = ".gitignore" ]] && continue
+
+    echo "symlinking $file"
+    ln -fs $dir/$file ~/$file
+
 done
