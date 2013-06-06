@@ -1,5 +1,5 @@
 # Setup ueber path
-export UEBER_DIR=$HOME/src/ueber_mac
+export UEBER_DIR=$HOME/src/sf/ueber_mac
 
 # Alias some colors
 MAGENTA="\[\033[0;35m\]"

@@ -104,6 +104,9 @@
 ;; Stop the blinking cursor (make it solid)
 (blink-cursor-mode nil)
 
+;; Always show line numbers
+(global-linum-mode t)
+
 ;; ============================
 ;; X Window only settings
 ;; ============================
