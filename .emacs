@@ -3,13 +3,13 @@
 ;; ===================================
 
 
-					;(if (fboundp 'normal-top-level-add-subdirs-to-load-path)
-					;    (let* ((my-lisp-dir "~/.elisp/")
-					;          (default-directory my-lisp-dir))
-					;       (setq load-path (cons my-lisp-dir load-path))
-					;       (normal-top-level-add-subdirs-to-load-path)))
+;;(if (fboundp 'normal-top-level-add-subdirs-to-load-path)
+;;    (let* ((my-lisp-dir "~/.elisp/")
+;;          (default-directory my-lisp-dir))
+;;       (setq load-path (cons my-lisp-dir load-path))
+;;       (normal-top-level-add-subdirs-to-load-path)))
 
-					;(add-to-list 'load-path "~/.elisp/")
+;;(add-to-list 'load-path "~/.elisp/")
 
 ;; ============================
 ;; Key mappings
@@ -38,14 +38,14 @@
 (global-set-key [f6] 'hexl-find-file)
 
 ;; use F7 to get help (apropos)
-					;(global-set-key [f7] 'apropos)
+;;(global-set-key [f7] 'apropos)
 (global-set-key [f7] 'help-command)
 
 ;; use C-? to get help-for-help
-					;(global-set-key "\C-?" 'help-for-help)
+;;(global-set-key "\C-?" 'help-for-help)
 
 ;; use M-? to get help
-					;(global-set-key "\M-?" 'help-for-help) ;'help-command)
+;;(global-set-key "\M-?" 'help-for-help) ;'help-command)
 
 
 ;; ==============================
@@ -79,7 +79,7 @@
 (setq package-archives '(
 			 ("ELPA" . "http://tromey.com/elpa/")
 			 ("gnu" . "http://elpa.gnu.org/packages/")
-			 ;("marmalade" . "http://marmalade-repo.org/packages/")
+			 ;;("marmalade" . "http://marmalade-repo.org/packages/")
 			 ("melpa" . "http://melpa.milkbox.net/packages/")))
 
 ;; ============================
@@ -115,12 +115,11 @@
   
   ;; scrollbar
   (set-scroll-bar-mode 'right))
-					;(set-scroll-bar-mode nil)
 
 ;; Make minibuffer larger if there is more to see
-					;(autoload 'resize-minibuffer-mode "rsz-minibuf" nil t)
-					;(resize-minibuffer-mode)
-					;(setq resize-minibuffer-window-exactly nil)
+;;(autoload 'resize-minibuffer-mode "rsz-minibuf" nil t)
+;;(resize-minibuffer-mode)
+;;(setq resize-minibuffer-window-exactly nil)
 
 ;; ============================
 ;; Console only settings
@@ -129,13 +128,13 @@
   (interactive)
   ;; Scroll wheel and mouse
   ;; but they only work in emacs 21 with these settings
-					;(require 'xt-mouse)
-					;(xterm-mouse-mode 1)
-					;(mouse-wheel-mode 1)
+  ;;(require 'xt-mouse)
+  ;;(xterm-mouse-mode 1)
+  ;;(mouse-wheel-mode 1)
 
   ;; does this work ?
-					;(if (load "mwheel" t)
-					;    (mwheel-install)
+  ;;(if (load "mwheel" t)
+  ;;    (mwheel-install)
   
   ;; Disable the menu bar at the top of the screen
   (menu-bar-mode -1))
@@ -150,26 +149,26 @@
 ;; ============================
 ;; Miranda
 ;; ============================
-					;(setq auto-mode-alist (cons '("\\.m\$" . miranda-mode) auto-mode-alist))
-					;(setq completion-ignored-extensions (cons ".x" completion-ignored-extensions))
+;;(setq auto-mode-alist (cons '("\\.m\$" . miranda-mode) auto-mode-alist))
+;;(setq completion-ignored-extensions (cons ".x" completion-ignored-extensions))
 
-					;(autoload 'miranda-mode "miranda-mode"
-					;                        "Major mode for editing Miranda scripts" t nil)
-					;(setq miranda-mode-hook
-					;      '(lambda ()
-					;         (mira-auto-fill-mode 1)))
-					;(autoload 'run-mira "miranda-mode" "Run an inferior Miranda session" t nil)
-					;(autoload 'mira-man "miranda-mode" "Access on-line Miranda manual" t nil)
+;;(autoload 'miranda-mode "miranda-mode"
+;;                        "Major mode for editing Miranda scripts" t nil)
+;;(setq miranda-mode-hook
+;;      '(lambda ()
+;;         (mira-auto-fill-mode 1)))
+;;(autoload 'run-mira "miranda-mode" "Run an inferior Miranda session" t nil)
+;;(autoload 'mira-man "miranda-mode" "Access on-line Miranda manual" t nil)
 
 ;; ============================
 ;; csoundx
 ;; ============================
-					;(require 'stef-elisp)
-					;(add-to-list 'same-window-buffer-names "*Csound Log*") ; open output in same frame
+;;(require 'stef-elisp)
+;;(add-to-list 'same-window-buffer-names "*Csound Log*") ; open output in same frame
 
 ;; ============================
 ;; mmm-mode
 ;; ============================
-					;(require 'mmm-auto)
-					;(setq mmm-global-mode 'maybe)
+;;(require 'mmm-auto)
+;;(setq mmm-global-mode 'maybe)
 
