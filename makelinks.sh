@@ -16,6 +16,6 @@ for file in $dotfiles; do
     if [ "$file" != ".git" ] 
     then
 	echo "symlinking $file"
-	#ln -s $dir/$file ~/.$file
+	ln -s $dir/$file ~/.$file
     fi
 done
