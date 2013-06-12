@@ -9,7 +9,7 @@ export CLICOLOR=1 # add some color to the bash shell
 #export LSCOLORS=ExFxCxDxBxegedabagacad
 export LSCOLORS=gxfxbEaEBxxEhEhBaDaCaD
 
-export EDITOR="mate"
+export EDITOR="emacs"
 export PAGER="less"
 export BROWSER="chrome"
 
@@ -53,6 +53,13 @@ alias du='du -h'
 alias df='df -h'
 
 #############
+# functions #
+#############
+
+# mkdir and cd into it
+function md () { mkdir -p "$@" && eval cd "\"\$$#\""; }
+
+#############
 #   etc     #
 #############
 
@@ -63,7 +70,7 @@ export PATH=/opt/local/bin:/opt/local/sbin:$PATH
 [[ -s ~/.rvm/scripts/rvm ]] && . ~/.rvm/scripts/rvm
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 
-# set up QSTK directory for python and Computation Investment
-. ~/QSTK/local.sh
+# set up QSTK directory for python and Computational Investment
+[ -f ~/QSTK/local.sh ] && . ~/QSTK/local.sh
 
 
