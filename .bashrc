@@ -77,6 +77,7 @@ alias la='ls -a'
 alias gg='git status -s'
 alias du='du -h'
 alias df='df -h'
+alias linode='ssh peteyoung@173.255.198.155'
 
 #############
 # functions #
