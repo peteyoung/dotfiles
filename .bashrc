@@ -33,7 +33,7 @@ Darwin*) # os x
     ;; 
 *) 
     alias ls='ls --color=auto'
-    export LS_COLORS=$MY_LS_COLORS
+    #export LS_COLORS=$MY_LS_COLORS
     ;;
 esac
 
