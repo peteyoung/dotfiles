@@ -2,12 +2,13 @@
 #  variables  #
 ###############
 export AQUATERM_PATH=/Applications/AquaTerm.app
-export JAVA_HOME=`/usr/libexec/java_home`
 
-export CLICOLOR=1 # add some color to the bash shell
-#export LSCOLORS=GxFxCxDxBxegedabagaced
-#export LSCOLORS=ExFxCxDxBxegedabagacad
-export LSCOLORS=gxfxbEaEBxxEhEhBaDaCaD
+# JAVA_HOME
+case $(uname) in
+Darwin*) # os x
+    export JAVA_HOME=$(/usr/libexec/java_home)
+    ;; 
+esac
 
 export EDITOR="emacs"
 export PAGER="less"
@@ -15,6 +16,26 @@ export BROWSER="chrome"
 
 # Setup ueber path
 export UEBER_DIR=$HOME/src/sf/ueber_mac
+
+##################
+#   ls colors    #
+##################
+
+#MY_LS_COLORS=GxFxCxDxBxegedabagaced
+#MY_LS_COLORS=ExFxCxDxBxegedabagacad
+MY_LS_COLORS=gxfxbEaEBxxEhEhBaDaCaD
+
+case $(uname) in
+Darwin*) # os x
+    export CLICOLOR=1 
+    alias ls='ls -G'
+    export LSCOLORS=$MY_LS_COLORS
+    ;; 
+*) 
+    alias ls='ls --color=auto'
+    export LS_COLORS=$MY_LS_COLORS
+    ;;
+esac
 
 ##################
 # git completion #
@@ -33,6 +54,11 @@ BLUE="\[\033[34m\]"
 CYAN="\[\033[0;36m\]"
 GREEN="\[\033[0;32m\]"
 ORANGE="\[\033[38;5;172m\]"
+RED="\[\033[31m\]"
+WHITE="\[\033[0m\]"
+GREEN="\[\033[01;32m\]"
+BLUE="\[\033[01;34m\]"
+PINK="\[\033[01;35m\]"
 
 export PS1=$ORANGE'λ$(
     if [[ $(__git_ps1) =~ \*\)$ ]]
@@ -64,7 +90,7 @@ function md () { mkdir -p "$@" && eval cd "\"\$$#\""; }
 #############
 
 # Add path for macports
-export PATH=/opt/local/bin:/opt/local/sbin:$PATH
+[[ $(uname) == "Darwin*" ]] && export PATH=/opt/local/bin:/opt/local/sbin:$PATH
 
 # set up rvm - ruby version manager
 [[ -s ~/.rvm/scripts/rvm ]] && . ~/.rvm/scripts/rvm
