@@ -21,19 +21,18 @@ export UEBER_DIR=$HOME/src/sf/ueber_mac
 #   ls colors    #
 ##################
 
-#MY_LS_COLORS=GxFxCxDxBxegedabagaced
-#MY_LS_COLORS=ExFxCxDxBxegedabagacad
-MY_LS_COLORS=gxfxbEaEBxxEhEhBaDaCaD
+# http://geoff.greer.fm/lscolors/
+# https://github.com/seebi/dircolors-solarized
 
 case $(uname) in
 Darwin*) # os x
     export CLICOLOR=1 
     alias ls='ls -G'
-    export LSCOLORS=$MY_LS_COLORS
+    export LSCOLORS=ExGxBxDxCxEgEdxbxgxcxd
     ;; 
 *) 
     alias ls='ls --color=auto'
-    #export LS_COLORS=$MY_LS_COLORS
+    eval `dircolors ~/.dotfiles/dircolors.256dark`
     ;;
 esac
 
