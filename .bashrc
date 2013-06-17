@@ -21,18 +21,19 @@ export UEBER_DIR=$HOME/src/sf/ueber_mac
 #   ls colors    #
 ##################
 
-# http://geoff.greer.fm/lscolors/
-# https://github.com/seebi/dircolors-solarized
+#MY_LS_COLORS=GxFxCxDxBxegedabagaced
+#MY_LS_COLORS=ExFxCxDxBxegedabagacad
+MY_LS_COLORS=gxfxbEaEBxxEhEhBaDaCaD
 
 case $(uname) in
 Darwin*) # os x
     export CLICOLOR=1 
     alias ls='ls -G'
-    export LSCOLORS=ExGxBxDxCxEgEdxbxgxcxd
+    export LSCOLORS=$MY_LS_COLORS
     ;; 
 *) 
     alias ls='ls --color=auto'
-    eval `dircolors ~/.dotfiles/dircolors.256dark`
+    export LS_COLORS=$MY_LS_COLORS
     ;;
 esac
 
@@ -55,8 +56,6 @@ GREEN="\[\033[0;32m\]"
 ORANGE="\[\033[38;5;172m\]"
 RED="\[\033[31m\]"
 WHITE="\[\033[0m\]"
-GREEN="\[\033[01;32m\]"
-BLUE="\[\033[01;34m\]"
 PINK="\[\033[01;35m\]"
 
 export PS1=$ORANGE'λ$(
@@ -76,7 +75,6 @@ alias la='ls -a'
 alias gg='git status -s'
 alias du='du -h'
 alias df='df -h'
-alias linode='ssh peteyoung@173.255.198.155'
 
 #############
 # functions #

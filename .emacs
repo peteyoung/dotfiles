@@ -107,6 +107,9 @@
 ;; Always show line numbers
 (global-linum-mode t)
 
+;; Overwrite selected region with yank or typing
+(delete-selection-mode 1)
+
 ;; ============================
 ;; X Window only settings
 ;; ============================
