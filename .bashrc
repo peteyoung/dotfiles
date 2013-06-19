@@ -1,12 +1,13 @@
 ###############
 #  variables  #
 ###############
-export AQUATERM_PATH=/Applications/AquaTerm.app
 
-# JAVA_HOME
 case $(uname) in
-Darwin*) # os x
+# os x
+Darwin*) 
+     # JAVA_HOME
     export JAVA_HOME=$(/usr/libexec/java_home)
+    export AQUATERM_PATH=/Applications/AquaTerm.app
     ;; 
 esac
 
@@ -21,19 +22,18 @@ export UEBER_DIR=$HOME/src/sf/ueber_mac
 #   ls colors    #
 ##################
 
-#MY_LS_COLORS=GxFxCxDxBxegedabagaced
-#MY_LS_COLORS=ExFxCxDxBxegedabagacad
-MY_LS_COLORS=gxfxbEaEBxxEhEhBaDaCaD
+# http://geoff.greer.fm/lscolors/
+# https://github.com/seebi/dircolors-solarized
 
 case $(uname) in
 Darwin*) # os x
     export CLICOLOR=1 
     alias ls='ls -G'
-    export LSCOLORS=$MY_LS_COLORS
+    export LSCOLORS=ExGxBxDxCxEgEdxbxgxcxd
     ;; 
 *) 
     alias ls='ls --color=auto'
-    export LS_COLORS=$MY_LS_COLORS
+    eval `dircolors ~/.dotfiles/dircolors.256dark`
     ;;
 esac
 
@@ -75,6 +75,7 @@ alias la='ls -a'
 alias gg='git status -s'
 alias du='du -h'
 alias df='df -h'
+alias linode='ssh peteyoung@173.255.198.155'
 
 #############
 # functions #
@@ -88,7 +89,7 @@ function md () { mkdir -p "$@" && eval cd "\"\$$#\""; }
 #############
 
 # Add path for macports
-[[ $(uname) == "Darwin*" ]] && export PATH=/opt/local/bin:/opt/local/sbin:$PATH
+[[ $(uname) == Darwin* ]] && export PATH=/opt/local/bin:/opt/local/sbin:$PATH
 
 # set up rvm - ruby version manager
 [[ -s ~/.rvm/scripts/rvm ]] && . ~/.rvm/scripts/rvm
