@@ -110,6 +110,12 @@
 ;; Overwrite selected region with yank or typing
 (delete-selection-mode 1)
 
+;; Number of lines to leave for context when scrolling
+(setq next-screen-context-lines 10)
+
+;; Keep cursor in same position while scrolling
+;;(setq scroll-error-top-bottom t)
+
 ;; ============================
 ;; X Window only settings
 ;; ============================
