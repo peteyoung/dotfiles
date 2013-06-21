@@ -16,6 +16,7 @@ for file in $dotfiles; do
 
     [[ "$file" = ".git" ]] && continue
     [[ "$file" = ".gitignore" ]] && continue
+    [[ "$file" = *~ ]] && continue
 
     echo "symlinking $file"
     ln -fs $dir/$file ~/$file
