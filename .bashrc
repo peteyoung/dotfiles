@@ -75,6 +75,9 @@ alias la='ls -a'
 alias gg='git status -s'
 alias du='du -h'
 alias df='df -h'
+alias psaux='ps aux | grep -v grep | grep '
+alias ec='emacsclient'
+alias eckill='emacsclient -e "(kill-emacs)"'
 alias linode='ssh peteyoung@173.255.198.155'
 
 #############
