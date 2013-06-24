@@ -123,4 +123,4 @@ function showColors {
 }
 
 
-export $PATH
+export PATH
