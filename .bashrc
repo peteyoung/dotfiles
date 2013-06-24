@@ -94,6 +94,10 @@ function md () { mkdir -p "$@" && eval cd "\"\$$#\""; }
 # Add path for macports
 [[ $(uname) == Darwin* ]] && export PATH=/opt/local/bin:/opt/local/sbin:$PATH
 
+# Add path for macports postgresql
+POSTGRES_PATH="/opt/local/lib/postgresql92/bin"
+[[ -d "${POSTGRES_PATH}" ]] && PATH=$POSTGRES_PATH:$PATH
+
 # set up rvm - ruby version manager
 [[ -s ~/.rvm/scripts/rvm ]] && . ~/.rvm/scripts/rvm
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
@@ -117,3 +121,6 @@ function showColors {
    echo
  done
 }
+
+
+export $PATH
