@@ -29,7 +29,13 @@ case $(uname) in
 Darwin*) # os x
     export CLICOLOR=1 
     alias ls='ls -G'
-    export LSCOLORS=ExGxBxDxCxEgEdxbxgxcxd
+
+    # OS X default
+    export LSCOLORS="exfxcxdxbxegedabagacad"
+
+    # Linux default (looks terrible solarized)
+    #export LSCOLORS="ExGxBxDxCxEgEdxbxgxcxd"
+
     ;; 
 *) 
     alias ls='ls --color=auto'
@@ -122,5 +128,33 @@ function showColors {
  done
 }
 
+###################
+# psql prettifier #
+###################
+ppsql() {
+  TEMP_LESS=$LESS
+  TEMP_PAGER=$PAGER  
 
+  PSQL_YELLOW=$(printf "\e[1;33m")
+  PSQL_LIGHT_CYAN=$(printf "\e[1;36m")
+  PSQL_NOCOLOR=$(printf "\e[0m")
+
+  export LESS="-iMSx4 -FXR"
+
+  PAGER="sed \"s/\([[:space:]]\+[0-9.\-]\+\)$/${PSQL_LIGHT_CYAN}\1$PSQL_NOCOLOR/;" 
+  PAGER+="s/\([[:space:]]\+[0-9.\-]\+[[:space:]]\)/${PSQL_LIGHT_CYAN}\1$PSQL_NOCOLOR/g;" 
+  PAGER+="s/|/$PSQL_YELLOW|$PSQL_NOCOLOR/g;s/^\([-+]\+\)/$PSQL_YELLOW\1$PSQL_NOCOLOR/\" 2>/dev/null  | less"
+  export PAGER
+
+  env psql "$@"
+
+  [[ -z "$TEMP_LESS" ]] && unset LESS || export LESS=$TEMP_LESS
+  [[ -z "$TEMP_PAGER" ]] && unset PAGER || export LESS=$TEMP_PAGER
+  #unset LESS PAGER
+}
+
+
+###############
+# export PATH #
+###############
 export PATH
