@@ -123,7 +123,10 @@
   (interactive)
   
   ;; scrollbar
-  (set-scroll-bar-mode 'right))
+  (set-scroll-bar-mode 'right)
+
+  ;; solarized
+  (load-theme 'solarized-dark t))
 
 ;; Make minibuffer larger if there is more to see
 ;;(autoload 'resize-minibuffer-mode "rsz-minibuf" nil t)
