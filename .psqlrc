@@ -9,7 +9,7 @@
 \timing
 
 -- Set border around query results.
---\pset border 2
+\pset border 2
 
 -- Use unicode chars for drawing cells instead of "+" and "-"
 --\pset linestyle unicode
@@ -18,7 +18,7 @@
 --\setenv PAGER /usr/bin/less
 
 -- Turn pager off
---\set PAGER off
+\set PAGER off
 
 -- prompt -> user@host:database with colors across several lines.
 \set PROMPT1 '\n%[%033[0;34m%]%n%[%033[1;35m%]@%[%033[0;34m%]%m%[%033[1;35m%]:%[%033[0;34m%]%/%[%033[1;31m%]\n%#%[%033[0;32m%] '

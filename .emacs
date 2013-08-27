@@ -99,10 +99,11 @@
 (column-number-mode 1)
 
 ;; High light the current line the cursor is on
-(hl-line-mode 0)
+(hl-line-mode 0) ;; need to change line color
 
 ;; Stop the blinking cursor (make it solid)
-(blink-cursor-mode nil)
+;;(blink-cursor-mode nil)
+(if (fboundp 'blink-cursor-mode) (blink-cursor-mode 0))
 
 ;; Always show line numbers
 (global-linum-mode t)
@@ -123,7 +124,10 @@
   (interactive)
   
   ;; scrollbar
-  (set-scroll-bar-mode 'right))
+  ;;(set-scroll-bar-mode 'right)
+
+  ;; Set the cursor type
+  (set-default 'cursor-type 'box))
 
 ;; Make minibuffer larger if there is more to see
 ;;(autoload 'resize-minibuffer-mode "rsz-minibuf" nil t)
