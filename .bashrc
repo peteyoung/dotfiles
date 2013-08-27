@@ -91,6 +91,7 @@ alias df='df -h'
 alias psaux='ps aux | grep -v grep | grep '
 alias ec='emacsclient'
 alias eckill='emacsclient -e "(kill-emacs)"'
+alias remacs='find . -name "*~" -print0 | xargs -0 rm'
 alias linode='ssh peteyoung@173.255.198.155'
 
 #############

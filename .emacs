@@ -124,10 +124,13 @@
   (interactive)
   
   ;; scrollbar
-  ;;(set-scroll-bar-mode 'right)
+  (set-scroll-bar-mode 'right)
 
   ;; Set the cursor type
-  (set-default 'cursor-type 'box))
+  (set-default 'cursor-type 'box)
+
+  ;; solarized
+  (load-theme 'solarized-dark t))
 
 ;; Make minibuffer larger if there is more to see
 ;;(autoload 'resize-minibuffer-mode "rsz-minibuf" nil t)
