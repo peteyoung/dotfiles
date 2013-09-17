@@ -23,7 +23,7 @@ export BROWSER="chrome"
 export UEBER_DIR=$HOME/src/sf/ueber_mac
 
 # Configure reporting for development
-export REPORTING_ENV=development
+#export REPORTING_ENV=development
 
 ##################
 #   ls colors    #
