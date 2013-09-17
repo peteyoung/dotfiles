@@ -126,6 +126,9 @@
   ;; scrollbar
   (set-scroll-bar-mode 'right)
 
+  ;; disable toolbar
+  (tool-bar-mode -1)
+
   ;; Set the cursor type
   (set-default 'cursor-type 'box)
 
