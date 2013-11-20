@@ -15,8 +15,15 @@ export EDITOR="emacs"
 export PAGER="less"
 export BROWSER="chrome"
 
+##############
+#    SIFI    #
+##############
+
 # Setup ueber path
 export UEBER_DIR=$HOME/src/sf/ueber_mac
+
+# Configure reporting for development
+#export REPORTING_ENV=development
 
 ##################
 #   ls colors    #
@@ -113,6 +120,24 @@ function showColors {
    echo
  done
 }
+
+###################
+#      Ruby       #
+###################
+
+CHRUBY_SETUP_SCRIPT=/usr/local/opt/chruby/share/chruby/chruby.sh
+if [[ -efs $CHRUBY_SETUP_SCRIPT ]]
+    then
+        . $CHRUBY_SETUP_SCRIPT
+        chruby 1.9.3-p429
+fi
+
+RVM_SETUP_SCRIPT=~/.rvm/scripts/rvm
+if [[ -efs $RVM_SETUP_SCRIPT ]]
+    then
+        . $RVM_SETUP_SCRIPT
+        PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+fi
 
 ###################
 # psql prettifier #
