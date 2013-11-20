@@ -98,21 +98,6 @@ function md () { mkdir -p "$@" && eval cd "\"\$$#\""; }
 #   etc     #
 #############
 
-# Add path for macports
-[[ $(uname) == Darwin* ]] && export PATH=/opt/local/bin:/opt/local/sbin:$PATH
-
-# Add path for macports postgresql
-POSTGRES_PATH="/opt/local/lib/postgresql92/bin"
-[[ -d "${POSTGRES_PATH}" ]] && PATH=$POSTGRES_PATH:$PATH
-
-# set up rvm - ruby version manager
-[[ -s ~/.rvm/scripts/rvm ]] && . ~/.rvm/scripts/rvm
-PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
-
-# set up QSTK directory for python and Computational Investment
-[ -f ~/QSTK/local.sh ] && . ~/QSTK/local.sh
-
-
 # function to display all color combos
 function showColors {
  for STYLE in 0 1 2 3 4 5 6 7; do

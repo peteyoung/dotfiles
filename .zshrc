@@ -21,7 +21,6 @@ export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.7.0_21.jdk/Contents/Home
 # Path             #
 ####################
 export PATH=/usr/local/bin:$PATH
-export PATH=$HOME/.rvm/bin:$PATH
 # ls color settings
 export CLICOLOR=1
 #export LSCOLORS=GxFxCxDxBxegedabagaced
@@ -58,8 +57,4 @@ setopt EXTENDED_GLOB
 for rcfile in "${ZDOTDIR:-$HOME}"/.zprezto/runcoms/^README.md(.N); do
   ln -s "$rcfile" "${ZDOTDIR:-$HOME}/.${rcfile:t}"
 done
-
-
-#[[ -s $HOME/.tmuxinator/scripts/tmuxinator ]] && source $HOME/.tmuxinator/scripts/tmuxinator
-[[ -s $HOME/.rvm/scripts/rvm ]] && source $HOME/.rvm/scripts/rvm
 
