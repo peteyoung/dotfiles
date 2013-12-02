@@ -11,7 +11,7 @@ Darwin*)
     ;; 
 esac
 
-export EDITOR="emacs"
+export EDITOR="vim"
 export PAGER="less"
 export BROWSER="chrome"
 
@@ -24,6 +24,9 @@ export UEBER_DIR=$HOME/src/sf/ueber_mac
 
 # Configure reporting for development
 #export REPORTING_ENV=development
+
+export SIFI_GEMSERVER_PASSWORD='Fz*47u'
+export SIFI_GEMSERVER_USER=simplifi
 
 ##################
 #   ls colors    #
@@ -49,6 +52,18 @@ Darwin*) # os x
     eval `dircolors ~/.dotfiles/dircolors.256dark`
     ;;
 esac
+
+##############
+# man colors #
+##############
+
+export LESS_TERMCAP_mb=$'\E[01;31m'       # begin blinking
+export LESS_TERMCAP_md=$'\E[32m'          #$'\E[01;38;5;74m'  # begin bold
+export LESS_TERMCAP_me=$'\E[0m'           # end mode
+export LESS_TERMCAP_se=$'\E[0m'           # end standout-mode
+export LESS_TERMCAP_so=$'\E[36m'          #$'\E[38;5;246m'    # begin standout-mode - info box
+export LESS_TERMCAP_ue=$'\E[0m'           # end underline
+export LESS_TERMCAP_us=$'\E[04;31;5;146m' # begin underline
 
 ##################
 # git completion #
@@ -93,6 +108,7 @@ alias ec='emacsclient'
 alias eckill='emacsclient -e "(kill-emacs)"'
 alias remacs='find . -name "*~" -print0 | xargs -0 rm'
 alias linode='ssh peteyoung@173.255.198.155'
+alias bc='bc -q'
 
 #############
 # functions #

@@ -6,7 +6,7 @@ alias ccat='/usr/local/share/python/pygmentize -g'
 alias be='bundle exec'
 alias t='tree -ACr .'
 alias e=$EDITOR
-alias psg='ps aux | grep -v grep | grep'
+alias psaux='ps aux | grep -v grep | grep'
 alias ta='tmux attach -t'
 alias ll='ls -lah'
 
@@ -15,51 +15,72 @@ alias ll='ls -lah'
 ####################
 export TERM=xterm-256color
 export UEBER_DIR=$HOME/src/ueber_mac
-export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.7.0_21.jdk/Contents/Home
 
 ####################
 # Path             #
 ####################
 export PATH=/usr/local/bin:$PATH
-export PATH=$HOME/.rvm/bin:$PATH
-# ls color settings
-export CLICOLOR=1
-#export LSCOLORS=GxFxCxDxBxegedabagaced
-export LSCOLORS=gxfxbEaEBxxEhEhBaDaCaD
-
-####################
-# Colors           #
-####################
-#autoload -U colors && colors
-#MAGENTA="\[\033[0;35m\]"
-#YELLOW="\[\033[0;33m\]"
-#BLUE="\[\033[34m\]"
-#CYAN="\[\033[0;36m\]"
-#GREEN="\[\033[0;32m\]"
-#ORANGE="\[\e[38;5;172m\]"
-#SOMETHING="%{\e[0;31m%}%m%{\e[0m%}"
-
-####################
-# Git Completion   #
-####################
-#GIT_PS1_SHOWDIRTYSTATE=true
-#source ~/.git-completion.bash
-#source ~/.git-prompt.sh
 
 ####################
 # Prompt           #
 ####################
-export PS1='λ: ' 
+autoload -U colors && colors
+autoload -U promptinit &&  promptinit
+autoload -U compinit && compinit
+PROMPT="%{$fg[red]%}λ%{$fg[yellow]%}: %{$fg[green]%}"
 
 ####################
 # Prezto Loading   #
 ####################
-setopt EXTENDED_GLOB
-for rcfile in "${ZDOTDIR:-$HOME}"/.zprezto/runcoms/^README.md(.N); do
-  ln -s "$rcfile" "${ZDOTDIR:-$HOME}/.${rcfile:t}"
-done
+#setopt EXTENDED_GLOB
+#for rcfile in "${ZDOTDIR:-$HOME}"/.zprezto/runcoms/^README.md(.N); do
+#  ln -s "$rcfile" "${ZDOTDIR:-$HOME}/.${rcfile:t}"
+#done
 
+###################
+#      Ruby       #
+###################
 
+CHRUBY_SETUP_SCRIPT=/usr/local/opt/chruby/share/chruby/chruby.sh
+if [[ -f $CHRUBY_SETUP_SCRIPT ]]
+    then
+        . $CHRUBY_SETUP_SCRIPT
+        chruby 1.9.3-p429
+fi
+
+RVM_SETUP_SCRIPT=~/.rvm/scripts/rvm
+if [[ -f $RVM_SETUP_SCRIPT ]]
+    then
+        . $RVM_SETUP_SCRIPT
+        PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+fi
+
+###################
+# color man pages #
+###################
+can() {
+    env \
+	LESS_TERMCAP_mb=$(printf "\e[1;31m") \
+	LESS_TERMCAP_md=$(printf "\e[1;31m") \
+	LESS_TERMCAP_me=$(printf "\e[0m") \
+	LESS_TERMCAP_se=$(printf "\e[0m") \
+	LESS_TERMCAP_so=$(printf "\e[1;44;33m") \
+	LESS_TERMCAP_ue=$(printf "\e[0m") \
+	LESS_TERMCAP_us=$(printf "\e[1;32m") \
+	man "$@"
+}
+
+#################################################
+# cd to current folder in focused finder window #
+#################################################
+cdf() {
+    target=`osascript -e 'tell application "Finder" to if (count of Finder windows) > 0 then get POSIX path of (target of front Finder window as text)'`
+    if [ "$target" != "" ]; then
+        cd "$target"; pwd
+    else
+        echo 'No Finder window found' >&2
+    fi
+}
 #[[ -s $HOME/.tmuxinator/scripts/tmuxinator ]] && source $HOME/.tmuxinator/scripts/tmuxinator
-[[ -s $HOME/.rvm/scripts/rvm ]] && source $HOME/.rvm/scripts/rvm
+
 

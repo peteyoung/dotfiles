@@ -114,6 +114,12 @@
 ;; Number of lines to leave for context when scrolling
 (setq next-screen-context-lines 10)
 
+;; one line at a time
+(setq mouse-wheel-scroll-amount '(1 ((shift) . 1))) 
+    
+;; don't accelerate scrolling
+;(setq mouse-wheel-progressive-speed nil)
+
 ;; Keep cursor in same position while scrolling
 ;;(setq scroll-error-top-bottom t)
 
