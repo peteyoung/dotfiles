@@ -81,6 +81,7 @@ cdf() {
         echo 'No Finder window found' >&2
     fi
 }
+
 #[[ -s $HOME/.tmuxinator/scripts/tmuxinator ]] && source $HOME/.tmuxinator/scripts/tmuxinator
 
 
