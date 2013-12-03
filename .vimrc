@@ -1,7 +1,14 @@
 set nocompatible
 filetype off
 
-execute pathogen#infect()
+" Set up vundle
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+Bundle 'gmarik/vundle'
+
+" Vundle managed bundles
+Bundle 'altercation/vim-colors-solarized'
+Bundle 'vim-ruby/vim-ruby'
 
 syntax on
 
