@@ -138,6 +138,13 @@ function showColors {
 }
 
 ###################
+#    Homebrew     #
+###################
+
+PATH=/usr/local/sbin:$PATH
+PATH=/usr/local/bin:$PATH
+
+###################
 #      Ruby       #
 ###################
 
@@ -145,6 +152,7 @@ CHRUBY_SETUP_SCRIPT=/usr/local/opt/chruby/share/chruby/chruby.sh
 if [[ -efs $CHRUBY_SETUP_SCRIPT ]]
     then
         . $CHRUBY_SETUP_SCRIPT
+        export RUBIES=(/opt/rubies/*)
         chruby 1.9.3-p429
 fi
 
