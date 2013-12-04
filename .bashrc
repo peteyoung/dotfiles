@@ -18,18 +18,11 @@ export EDITOR="vim"
 export PAGER="less"
 export BROWSER="chrome"
 
-##############
-#    SIFI    #
-##############
+####################
+#  Local Settings  #
+####################
 
-# Setup ueber path
-export UEBER_DIR=$HOME/src/sf/ueber_mac
-
-# Configure reporting for development
-#export REPORTING_ENV=development
-
-export SIFI_GEMSERVER_PASSWORD='Fz*47u'
-export SIFI_GEMSERVER_USER=simplifi
+[[ -f ~/.bash_local ]] && . ~/.bash_local
 
 ##################
 #   ls colors    #
