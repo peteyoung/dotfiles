@@ -4,11 +4,14 @@
 
 case $(uname) in
 # os x
-Darwin*) 
-     # JAVA_HOME
+Darwin*)
+    # JAVA_HOME
     export JAVA_HOME=$(/usr/libexec/java_home)
     export AQUATERM_PATH=/Applications/AquaTerm.app
-    ;; 
+    ;;
+Linux)
+    export TERM=xterm-256color
+    ;;
 esac
 
 export EDITOR="vim"
@@ -142,14 +145,16 @@ function showColors {
 ###################
 
 CHRUBY_SETUP_SCRIPT=/usr/local/opt/chruby/share/chruby/chruby.sh
-if [[ -efs $CHRUBY_SETUP_SCRIPT ]]
+if [[ -f $CHRUBY_SETUP_SCRIPT ]] &&
+   [[ -s $CHRUBY_SETUP_SCRIPT ]]
     then
         . $CHRUBY_SETUP_SCRIPT
         chruby 1.9.3-p429
 fi
 
 RVM_SETUP_SCRIPT=~/.rvm/scripts/rvm
-if [[ -efs $RVM_SETUP_SCRIPT ]]
+if [[ -f $RVM_SETUP_SCRIPT ]] &&
+   [[ -s $RVM_SETUP_SCRIPT ]]
     then
         . $RVM_SETUP_SCRIPT
         PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
