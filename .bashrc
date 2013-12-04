@@ -4,29 +4,25 @@
 
 case $(uname) in
 # os x
-Darwin*) 
-     # JAVA_HOME
+Darwin*)
+    # JAVA_HOME
     export JAVA_HOME=$(/usr/libexec/java_home)
     export AQUATERM_PATH=/Applications/AquaTerm.app
-    ;; 
+    ;;
+Linux)
+    export TERM=xterm-256color
+    ;;
 esac
 
 export EDITOR="vim"
 export PAGER="less"
 export BROWSER="chrome"
 
-##############
-#    SIFI    #
-##############
+####################
+#  Local Settings  #
+####################
 
-# Setup ueber path
-export UEBER_DIR=$HOME/src/sf/ueber_mac
-
-# Configure reporting for development
-#export REPORTING_ENV=development
-
-export SIFI_GEMSERVER_PASSWORD='Fz*47u'
-export SIFI_GEMSERVER_USER=simplifi
+[[ -f ~/.bash_local ]] && . ~/.bash_local
 
 ##################
 #   ls colors    #
@@ -149,7 +145,8 @@ PATH=/usr/local/bin:$PATH
 ###################
 
 CHRUBY_SETUP_SCRIPT=/usr/local/opt/chruby/share/chruby/chruby.sh
-if [[ -efs $CHRUBY_SETUP_SCRIPT ]]
+if [[ -f $CHRUBY_SETUP_SCRIPT ]] &&
+   [[ -s $CHRUBY_SETUP_SCRIPT ]]
     then
         . $CHRUBY_SETUP_SCRIPT
         export RUBIES=(/opt/rubies/*)
@@ -157,7 +154,8 @@ if [[ -efs $CHRUBY_SETUP_SCRIPT ]]
 fi
 
 RVM_SETUP_SCRIPT=~/.rvm/scripts/rvm
-if [[ -efs $RVM_SETUP_SCRIPT ]]
+if [[ -f $RVM_SETUP_SCRIPT ]] &&
+   [[ -s $RVM_SETUP_SCRIPT ]]
     then
         . $RVM_SETUP_SCRIPT
         PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
