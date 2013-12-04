@@ -9,6 +9,8 @@ dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 cd $dir
 
 # files to exclude
+#   http://www.bestsolution.at/en/03_Products-nbsp~--nbsp~Projects__13_exclude-nbsp~wildcard-nbsp~matches.html
+#   https://www.gnu.org/software/bash/manual/html_node/Filename-Expansion.html
 GLOBIGNORE=\.git:\.gitignore:*~:*.swp
 
 # get dot files in dir
