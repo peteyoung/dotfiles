@@ -33,7 +33,7 @@ export BROWSER="chrome"
 
 case $(uname) in
 Darwin*) # os x
-    export CLICOLOR=1 
+    export CLICOLOR=1
     alias ls='ls -G'
 
     # OS X default
@@ -42,8 +42,8 @@ Darwin*) # os x
     # Linux default (looks terrible solarized)
     #export LSCOLORS="ExGxBxDxCxEgEdxbxgxcxd"
 
-    ;; 
-*) 
+    ;;
+*)
     alias ls='ls --color=auto'
     eval `dircolors ~/.dotfiles/dircolors.256dark`
     ;;
@@ -166,7 +166,7 @@ fi
 ###################
 ppsql() {
   TEMP_LESS=$LESS
-  TEMP_PAGER=$PAGER  
+  TEMP_PAGER=$PAGER
 
   PSQL_YELLOW=$(printf "\e[1;33m")
   PSQL_LIGHT_CYAN=$(printf "\e[1;36m")
@@ -174,8 +174,8 @@ ppsql() {
 
   export LESS="-iMSx4 -FXR"
 
-  PAGER="sed \"s/\([[:space:]]\+[0-9.\-]\+\)$/${PSQL_LIGHT_CYAN}\1$PSQL_NOCOLOR/;" 
-  PAGER+="s/\([[:space:]]\+[0-9.\-]\+[[:space:]]\)/${PSQL_LIGHT_CYAN}\1$PSQL_NOCOLOR/g;" 
+  PAGER="sed \"s/\([[:space:]]\+[0-9.\-]\+\)$/${PSQL_LIGHT_CYAN}\1$PSQL_NOCOLOR/;"
+  PAGER+="s/\([[:space:]]\+[0-9.\-]\+[[:space:]]\)/${PSQL_LIGHT_CYAN}\1$PSQL_NOCOLOR/g;"
   PAGER+="s/|/$PSQL_YELLOW|$PSQL_NOCOLOR/g;s/^\([-+]\+\)/$PSQL_YELLOW\1$PSQL_NOCOLOR/\" 2>/dev/null  | less"
   export PAGER
 
