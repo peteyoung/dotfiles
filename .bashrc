@@ -96,7 +96,6 @@ export PS1=$ORANGE'λ$(
 
 alias ll='ls -lah'
 alias la='ls -a'
-alias gg='git status -s'
 alias du='du -h'
 alias df='df -h'
 alias psaux='ps aux | grep -v grep | grep '
@@ -105,6 +104,14 @@ alias eckill='emacsclient -e "(kill-emacs)"'
 alias remacs='find . -name "*~" -print0 | xargs -0 rm'
 alias linode='ssh peteyoung@173.255.198.155'
 alias bc='bc -q'
+
+#################
+#  git aliases  #
+#################
+
+alias gg='git status -s'
+alias gd='git diff --no-ext-diff'
+alias gdw='git diff --no-ext-diff --word-diff=color'
 
 #############
 # functions #
