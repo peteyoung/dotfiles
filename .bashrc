@@ -103,15 +103,14 @@ alias ec='emacsclient'
 alias eckill='emacsclient -e "(kill-emacs)"'
 alias remacs='find . -name "*~" -print0 | xargs -0 rm'
 alias linode='ssh peteyoung@173.255.198.155'
-alias bc='bc -q'
 
 #################
 #  git aliases  #
 #################
 
 alias gg='git status -s'
-alias gd='git diff --no-ext-diff'
-alias gdw='git diff --no-ext-diff --word-diff=color'
+alias gdiff='git diff --no-ext-diff'
+alias gwdiff='git diff --no-ext-diff --word-diff=color'
 
 #############
 # functions #
@@ -119,6 +118,12 @@ alias gdw='git diff --no-ext-diff --word-diff=color'
 
 # mkdir and cd into it
 function md () { mkdir -p "$@" && eval cd "\"\$$#\""; }
+
+##########
+#   bc   #
+##########
+# http://superuser.com/questions/84949/dividing-with-gnus-bc
+export BC_ENV_ARGS="-q $HOME/.bcrc"
 
 #############
 #   etc     #

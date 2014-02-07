@@ -50,3 +50,8 @@ let g:solarized_termcolors=256
 colorscheme solarized
 set background=dark
 
+" Ctrl-j/k deletes blank line below/above, and Shift-Ctrl-j/k inserts.
+nnoremap <silent><C-j> m`:silent +g/\m^\s*$/d<CR>``:noh<CR>
+nnoremap <silent><C-k> m`:silent -g/\m^\s*$/d<CR>``:noh<CR>
+nnoremap <silent><S-C-j> :set paste<CR>m`o<Esc>``:set nopaste<CR>
+nnoremap <silent><S-C-k> :set paste<CR>m`O<Esc>``:set nopaste<CR>
