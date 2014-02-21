@@ -1,2 +1,2 @@
-EXCLUDES="README.md dircolors.256dark makelinks.sh"
+EXCLUDES="README.md dircolors.256dark"
 
