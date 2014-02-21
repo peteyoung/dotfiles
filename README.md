@@ -7,6 +7,7 @@ Depends on [rcm][1] from [thoughtbot][2].
 setup rcm
 ---------
 On a mac
+
 1. brew install rcm
 2. checkout this repo into ~/.dotfiles
 3. cp ~/.dotfiles/rcrc ~/.rcrc (nothing machine specific yet warranting a tag)
