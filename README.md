@@ -8,10 +8,13 @@ setup rcm
 ---------
 On a mac
 
-1. brew install rcm
-2. checkout this repo into ~/.dotfiles
-3. cp ~/.dotfiles/rcrc ~/.rcrc (nothing machine specific yet warranting a tag)
-4. rcup
+1. brew tap thoughtbot/formulae
+2. brew install rcm
+3. checkout this repo into ~/.dotfiles
+4. cp ~/.dotfiles/rcrc ~/.rcrc (nothing machine specific yet warranting a tag)
+5. lsrc (double check config files)
+6. rcdn -v
+7. rcup -v
 
 setup vim
 ---------
