@@ -6,15 +6,37 @@ Depends on [rcm][1] from [thoughtbot][2].
 
 setup rcm
 ---------
-On a mac
+__On a mac__
 
 1. brew tap thoughtbot/formulae
 2. brew install rcm
-3. checkout this repo into ~/.dotfiles
+3. git clone git@github.com:peteyoung/dotfiles.git ~/.dotfiles
 4. cp ~/.dotfiles/rcrc ~/.rcrc (nothing machine specific yet warranting a tag)
 5. lsrc (double check config files)
 6. rcdn -v
 7. rcup -v
+
+__In cygwin__
+
++ Be sure the following are installed
+    - autoconf
+    - automake
+    - libtool
+
+Run the following in cygterm
+
+1. git clone https://github.com/thoughtbot/rcm.git
+2. cd rcm
+3. aclocal ; autoheader; automake --add-missing ; autoconf
+4. ./configure ; make ; make install
+5. cd ~
+6. git clone https://github.com/peteyoung/dotfiles.git .dotfiles
+7. cp ~/.dotfiles/rcrc ~/.rcrc
+8. lsrc (double check config files)
+9. rcdn -v
+10. rcup -v
+
+You can safely ignore AC_CONFIG_HEADERS error in #3 above
 
 setup vim
 ---------
