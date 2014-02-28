@@ -145,6 +145,14 @@ function showColors {
  done
 }
 
+case $(uname -s) in
+  Darwin)
+    function gman () {
+      man -t $1 | open -a /Applications/Preview.app -f
+    }
+    ;;
+esac
+
 ###################
 #    Homebrew     #
 ###################
