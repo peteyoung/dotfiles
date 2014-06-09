@@ -18,4 +18,3 @@ end
 
 # enable color
 Wirble.colorize
-
