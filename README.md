@@ -16,6 +16,16 @@ __On a mac__
 6. rcdn -v
 7. rcup -v
 
+__On Arch__
+
+NOTE: requires base-devel package group (provides fakeroot and strip)
+
+1. curl -O "https://aur.archlinux.org/packages/rc/rcm/rcm.tar.gz"
+2. tar -zxvf rcm.tar.gz 
+3. cd rcm
+4. makepkg -s
+5. sudo pacman -U rcm-1.2.3-1-any.pkg.tar.xz
+
 __In cygwin__
 
 + Be sure the following are installed
