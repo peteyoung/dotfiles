@@ -103,6 +103,7 @@ alias ec='emacsclient'
 alias eckill='emacsclient -e "(kill-emacs)"'
 alias remacs='find . -name "*~" -print0 | xargs -0 rm'
 alias linode='ssh peteyoung@173.255.198.155'
+alias hl='history | sed -e '"'"'s/^\[ \\t\]\*//'"'"' | sort -rn | less'
 
 #################
 #  git aliases  #
