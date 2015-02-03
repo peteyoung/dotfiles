@@ -6,7 +6,7 @@ case $(uname) in
 # os x
 Darwin*)
     # JAVA_HOME
-    export JAVA_HOME=$(/usr/libexec/java_home)
+    export JAVA_HOME=$(/usr/libexec/java_home -v 1.7*)
     export AQUATERM_PATH=/Applications/AquaTerm.app
     ;;
 Linux)
@@ -17,12 +17,6 @@ esac
 export EDITOR="vim"
 export PAGER="less"
 export BROWSER="chrome"
-
-####################
-#  Local Settings  #
-####################
-
-[[ -f ~/.bash_local ]] && . ~/.bash_local
 
 ##################
 #   ls colors    #
@@ -207,8 +201,13 @@ ppsql() {
   #unset LESS PAGER
 }
 
+####################
+#  Local Settings  #
+####################
+[[ -f ~/.bash_local ]] && . ~/.bash_local
 
 ###############
 # export PATH #
 ###############
 export PATH
+
