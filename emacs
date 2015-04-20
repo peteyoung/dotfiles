@@ -12,8 +12,22 @@
 ;;(add-to-list 'load-path "~/.elisp/")
 
 ;; ============================
-;; Key mappings
+;; Load packages
 ;; ============================
+(when (>= emacs-major-version 24)
+  (require 'package)
+  (package-initialize)
+  (add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/") t))
+
+;; ===========================
+;; Evil mode
+;; ===========================
+(require 'evil)
+(evil-mode 1)
+
+;; ============================
+;; Key mappings
+;; ===========================
 
 ;; Set up C-x i to move BACKWARDS one window
 (global-set-key "\C-xi"
@@ -116,7 +130,7 @@
 
 ;; one line at a time
 (setq mouse-wheel-scroll-amount '(1 ((shift) . 1))) 
-    
+
 ;; don't accelerate scrolling
 ;(setq mouse-wheel-progressive-speed nil)
 
@@ -128,7 +142,7 @@
 ;; ============================
 (defun x-only-settings ()
   (interactive)
-  
+
   ;; scrollbar
   (set-scroll-bar-mode 'right)
 

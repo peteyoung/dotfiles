@@ -3,13 +3,16 @@ filetype off
 
 " Set up vundle
 set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
-Bundle 'gmarik/vundle'
+call vundle#begin()
+Plugin 'gmarik/Vundle.vim'
 
 " Vundle managed bundles
-Bundle 'altercation/vim-colors-solarized'
-Bundle 'vim-ruby/vim-ruby'
-Bundle 'wting/rust.vim'
+Plugin 'altercation/vim-colors-solarized'
+Plugin 'vim-ruby/vim-ruby'
+Plugin 'wting/rust.vim'
+Plugin 'elixir-lang/vim-elixir'
+
+call vundle#end()
 
 syntax on
 
