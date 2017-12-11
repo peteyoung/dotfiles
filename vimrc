@@ -11,6 +11,8 @@ Plugin 'altercation/vim-colors-solarized'
 Plugin 'vim-ruby/vim-ruby'
 Plugin 'wting/rust.vim'
 Plugin 'elixir-lang/vim-elixir'
+Plugin 'vim-erlang/vim-erlang-runtime'
+Plugin 'derekwyatt/vim-scala'
 
 call vundle#end()
 
@@ -23,7 +25,7 @@ end
 set autoindent
 set smartindent
 
-set paste
+"set paste
 
 set title
 set number
@@ -63,8 +65,9 @@ nnoremap <silent><S-C-k> :set paste<CR>m`O<Esc>``:set nopaste<CR>
 " Tabs and spaces by filetype
 if has("autocmd")
   filetype on
+  autocmd FileType c              setlocal ts=4 sts=4 sw=4 expandtab
   autocmd FileType ruby           setlocal ts=2 sts=2 sw=2 expandtab
-  autocmd FileType python         setlocal ts=2 sts=2 sw=2 expandtab
+  autocmd FileType python         setlocal ts=4 sts=4 sw=4 expandtab
   autocmd FileType html           setlocal ts=2 sts=2 sw=2 expandtab
   autocmd FileType css            setlocal ts=2 sts=2 sw=2 expandtab
   autocmd FileType javascript     setlocal ts=4 sts=4 sw=4 expandtab
