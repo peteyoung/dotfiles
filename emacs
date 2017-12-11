@@ -20,8 +20,15 @@
   (add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/") t))
 
 ;; ===========================
+;; Start server for emacsclient use
+;; ===========================
+(load "server")
+(unless (server-running-p) (server-start))
+
+;; ===========================
 ;; Evil mode
 ;; ===========================
+(setq evil-want-C-u-scroll t)
 (require 'evil)
 (evil-mode 1)
 
