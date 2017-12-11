@@ -6,7 +6,7 @@ case $(uname) in
 # os x
 Darwin*)
     # JAVA_HOME
-    export JAVA_HOME=$(/usr/libexec/java_home -v 1.7*)
+    export JAVA_HOME=$(/usr/libexec/java_home -v 1.8*)
     export AQUATERM_PATH=/Applications/AquaTerm.app
     ;;
 Linux)
@@ -82,7 +82,14 @@ export PS1=$ORANGE'λ$(
     elif [[ $(__git_ps1) =~ \+\)$ ]]
     then echo "'$MAGENTA'"$(__git_ps1 " (%s)")
     else echo "'$CYAN'"$(__git_ps1 " (%s)")
-    fi)'$BLUE" \w"$GREEN": "
+    fi)'$BLUE' \w'$GREEN': '
+
+# https://spin.atomicobject.com/2016/05/28/log-bash-history/
+export PROMPT_COMMAND='if [ "$(id -u)" -ne 0 ]
+    then
+      echo "$(date "+%Y-%m-%d.%H:%M:%S") $(pwd) $(history 1)" \
+      >> ~/.logs/bash-history-$(date "+%Y-%m-%d").log
+    fi'
 
 #############
 #  aliases  #
@@ -98,6 +105,7 @@ alias eckill='emacsclient -e "(kill-emacs)"'
 alias remacs='find . -name "*~" -print0 | xargs -0 rm'
 alias linode='ssh peteyoung@173.255.198.155'
 alias hl='history | sed -e '"'"'s/^\[ \\t\]\*//'"'"' | sort -rn | less'
+alias ccat='highlight -O ansi'
 
 #################
 #  git aliases  #
@@ -164,8 +172,9 @@ if [[ -f $CHRUBY_SETUP_SCRIPT ]] &&
    [[ -s $CHRUBY_SETUP_SCRIPT ]]
     then
         . $CHRUBY_SETUP_SCRIPT
-        export RUBIES=(/opt/rubies/*)
-        chruby 1.9.3-p429
+        export RUBIES=(/opt/rubies/* /usr)
+        #chruby 1.9.3-p429
+        chruby 2.1.3
 fi
 
 RVM_SETUP_SCRIPT=~/.rvm/scripts/rvm
@@ -201,6 +210,18 @@ ppsql() {
   #unset LESS PAGER
 }
 
+##############
+# pipsi path #
+##############
+PATH=/Users/peteyoung/.local/bin:$PATH
+
+###############
+# pyenv setup #
+###############
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
+
 ####################
 #  Local Settings  #
 ####################
@@ -211,3 +232,6 @@ ppsql() {
 ###############
 export PATH
 
+
+# added by Pew
+source $(pew shell_config)
