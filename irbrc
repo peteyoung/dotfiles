@@ -7,14 +7,14 @@ IRB.conf[:HISTORY_FILE] = "#{ENV['HOME']}/.irb-save-history"
 IRB.conf[:PROMPT_MODE]  = :SIMPLE
 
 begin
-  require 'wirble'
+  #require 'wirble'
 
   # init wirble
-  Wirble.init
+  #Wirble.init
 
 rescue LoadError => err
   $stderr.puts "Couldn't load Wirble: #{err}"
 end
 
 # enable color
-Wirble.colorize
+#Wirble.colorize
