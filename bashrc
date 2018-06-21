@@ -177,14 +177,6 @@ if [[ -f $CHRUBY_SETUP_SCRIPT ]] &&
         chruby 2.1.3
 fi
 
-RVM_SETUP_SCRIPT=~/.rvm/scripts/rvm
-if [[ -f $RVM_SETUP_SCRIPT ]] &&
-   [[ -s $RVM_SETUP_SCRIPT ]]
-    then
-        . $RVM_SETUP_SCRIPT
-        PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
-fi
-
 ###################
 # psql prettifier #
 ###################
