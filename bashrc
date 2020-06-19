@@ -167,14 +167,16 @@ PATH=/usr/local/bin:$PATH
 #      Ruby       #
 ###################
 
-CHRUBY_SETUP_SCRIPT=/usr/local/opt/chruby/share/chruby/chruby.sh
+CHRUBY_INSTALL_DIR=/usr/local/opt/chruby/share/chruby
+CHRUBY_SETUP_SCRIPT=$CHRUBY_INSTALL_DIR/chruby.sh
+CHRUBY_AUTO_SWITCH_SCRIPT=$CHRUBY_INSTALL_DIR/auto.sh
 if [[ -f $CHRUBY_SETUP_SCRIPT ]] &&
    [[ -s $CHRUBY_SETUP_SCRIPT ]]
     then
         . $CHRUBY_SETUP_SCRIPT
-        export RUBIES=(/opt/rubies/* /usr)
-        #chruby 1.9.3-p429
-        chruby 2.1.3
+				. $CHRUBY_AUTO_SWITCH_SCRIPT
+        export RUBIES=(~/.rubies/* /usr)
+        chruby ruby-2.6.3
 fi
 
 ###################
@@ -205,14 +207,23 @@ ppsql() {
 ##############
 # pipsi path #
 ##############
-PATH=/Users/peteyoung/.local/bin:$PATH
+#PATH=/Users/peteyoung/.local/bin:$PATH
 
 ###############
 # pyenv setup #
 ###############
-export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
+export PATH="/Users/peteyoung/.pyenv/bin:$PATH"
 eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
+
+# pyenv bash completion
+. ~/.pyenv/completions/pyenv.bash
+
+##############
+# jenv setup #
+##############
+export PATH="$HOME/.jenv/bin:$PATH"
+eval "$(jenv init -)"
 
 ####################
 #  Local Settings  #
@@ -223,7 +234,3 @@ eval "$(pyenv init -)"
 # export PATH #
 ###############
 export PATH
-
-
-# added by Pew
-source $(pew shell_config)

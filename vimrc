@@ -106,7 +106,9 @@ function! SummarizeTabs()
   endtry
 endfunction
 
-
-
+" deal with smartindent in python
+" https://stackoverflow.com/questions/2063175/comments-go-to-start-of-line-in-the-insert-mode-in-vim
+" https://stackoverflow.com/questions/18415492/autoindent-is-subset-of-smartindent-in-vim/18415867#18415867
+au! FileType python setl nosmartindent
 
 
