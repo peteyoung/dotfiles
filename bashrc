@@ -155,7 +155,7 @@ function showColors {
 case $(uname -s) in
   Darwin)
     function gman () {
-      man -t $1 | open -a /Applications/Preview.app -f
+      man -t $1 | open -a /System/Applications/Preview.app -f
     }
     ;;
 esac
