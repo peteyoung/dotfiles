@@ -213,7 +213,6 @@ ppsql() {
 ###############
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
-#eval "$(pyenv init -)"
 eval "$(pyenv init --path)"
 eval "$(pyenv virtualenv-init -)"
 
@@ -226,6 +225,13 @@ eval "$(pyenv virtualenv-init -)"
 export PATH="$HOME/.jenv/bin:$PATH"
 eval "$(jenv init -)"
 
+#############
+# nvm setup #
+#############
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
 ####################
 #  Local Settings  #
 ####################
@@ -235,7 +241,3 @@ eval "$(jenv init -)"
 # export PATH #
 ###############
 export PATH
-
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
