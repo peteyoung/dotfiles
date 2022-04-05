@@ -208,11 +208,6 @@ ppsql() {
   #unset LESS PAGER
 }
 
-##############
-# pipsi path #
-##############
-#PATH=/Users/peteyoung/.local/bin:$PATH
-
 ###############
 # pyenv setup #
 ###############
