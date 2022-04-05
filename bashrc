@@ -178,7 +178,7 @@ if [[ -f $CHRUBY_SETUP_SCRIPT ]] &&
    [[ -s $CHRUBY_SETUP_SCRIPT ]]
     then
         . $CHRUBY_SETUP_SCRIPT
-				. $CHRUBY_AUTO_SWITCH_SCRIPT
+        . $CHRUBY_AUTO_SWITCH_SCRIPT
         export RUBIES=(~/.rubies/* /usr)
         chruby ruby-2.6.3
 fi
