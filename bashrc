@@ -36,6 +36,8 @@ Darwin*) # os x
     # Linux default (looks terrible solarized)
     #export LSCOLORS="ExGxBxDxCxEgEdxbxgxcxd"
 
+    # get rid of "zsh" message
+    export BASH_SILENCE_DEPRECATION_WARNING=1
     ;;
 *)
     alias ls='ls --color=auto'
@@ -126,6 +128,9 @@ alias gc='git commit'
 # mkdir and cd into it
 function md () { mkdir -p "$@" && eval cd "\"\$$#\""; }
 
+# pretty print $PATH
+function path () { echo "${PATH}" | tr : '\n'; }
+
 ##########
 #   bc   #
 ##########
@@ -167,22 +172,22 @@ esac
 PATH=/usr/local/sbin:$PATH
 PATH=/usr/local/bin:$PATH
 
-###################
-#      Ruby       #
-###################
-
-CHRUBY_INSTALL_DIR=/usr/local/opt/chruby/share/chruby
-CHRUBY_SETUP_SCRIPT=$CHRUBY_INSTALL_DIR/chruby.sh
-CHRUBY_AUTO_SWITCH_SCRIPT=$CHRUBY_INSTALL_DIR/auto.sh
-if [[ -f $CHRUBY_SETUP_SCRIPT ]] &&
-   [[ -s $CHRUBY_SETUP_SCRIPT ]]
-    then
-        . $CHRUBY_SETUP_SCRIPT
-        . $CHRUBY_AUTO_SWITCH_SCRIPT
-        export RUBIES=(~/.rubies/* /usr)
-        chruby ruby-2.6.3
-fi
-
+####################
+##      Ruby       #
+####################
+#
+#CHRUBY_INSTALL_DIR=/usr/local/opt/chruby/share/chruby
+#CHRUBY_SETUP_SCRIPT=$CHRUBY_INSTALL_DIR/chruby.sh
+#CHRUBY_AUTO_SWITCH_SCRIPT=$CHRUBY_INSTALL_DIR/auto.sh
+#if [[ -f $CHRUBY_SETUP_SCRIPT ]] &&
+#   [[ -s $CHRUBY_SETUP_SCRIPT ]]
+#    then
+#        . $CHRUBY_SETUP_SCRIPT
+#        . $CHRUBY_AUTO_SWITCH_SCRIPT
+#        export RUBIES=(~/.rubies/* /usr)
+#        chruby ruby-2.6.3
+#fi
+#
 ###################
 # psql prettifier #
 ###################
@@ -208,34 +213,34 @@ ppsql() {
   #unset LESS PAGER
 }
 
+################
+## pyenv setup #
+################
+#export PYENV_ROOT="$HOME/.pyenv"
+#export PATH="$PYENV_ROOT/bin:$PATH"
+#eval "$(pyenv init --path)"
+#eval "$(pyenv virtualenv-init -)"
+#
+## pyenv bash completion
+#. ~/.pyenv/completions/pyenv.bash
+#
 ###############
-# pyenv setup #
+## jenv setup #
 ###############
-export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init --path)"
-eval "$(pyenv virtualenv-init -)"
-
-# pyenv bash completion
-. ~/.pyenv/completions/pyenv.bash
-
+#export PATH="$HOME/.jenv/bin:$PATH"
+#eval "$(jenv init -)"
+#
 ##############
-# jenv setup #
+## nvm setup #
 ##############
-export PATH="$HOME/.jenv/bin:$PATH"
-eval "$(jenv init -)"
+#export NVM_DIR="$HOME/.nvm"
+#[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+#[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-#############
-# nvm setup #
-#############
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
-####################
-#  Local Settings  #
-####################
-[[ -f ~/.bash_local ]] && . ~/.bash_local
+#####################
+##  Local Settings  #
+#####################
+#[[ -f ~/.bash_local ]] && . ~/.bash_local
 
 ###############
 # export PATH #
