@@ -13,6 +13,8 @@ cd $dir
 #   https://www.gnu.org/software/bash/manual/html_node/Filename-Expansion.html
 GLOBIGNORE=\.git:\.gitignore:*~:*.swp:README.md:dircolors.256dark:makelinks.sh:\.DS_Store
 
+GLOBIGNORE=$GLOBIGNORE:bcrc:emacs:irbrc
+
 # create symlinks from .dotfiles/ to ~ 
 for file in *; do
 
