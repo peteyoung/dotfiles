@@ -1,17 +1,13 @@
 dotfiles
 ========
-
-These are the dotfiles I like to have on all boxen/accounts. They're (hopefully) able to handle living on os x or linux.
+These are the dotfiles I like to have on all boxes and accounts. They're (hopefully) able to handle living on macOS or linux.
 
 setup dotfiles
 --------------
-run ~/.dotfiles/makelinks.sh
+run `~/.dotfiles/makelinks.sh`
 
-setup vim
+git-prompt note
 ---------
-.vim is setup to use vundle. To get that bootstrapped, run the following commands.
-```bash
-mkdir -p ~/.vim/bundle
-git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
-vim +PluginInstall +qall
-```
+`git-completion.bash`, `git-completion.zsh`, and `git-prompt.sh` can be found at the link below.
+`git` currently doesn't allow sparse checkouts in a submodule, so it's a manual thing.
+[git prompt and completion](https://github.com/git/git/tree/master/contrib/completion)
