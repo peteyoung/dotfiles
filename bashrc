@@ -2,21 +2,10 @@
 #  variables  #
 ###############
 
-case $(uname) in
-# os x
-Darwin*)
-    # JAVA_HOME
-    export JAVA_HOME=$(/usr/libexec/java_home -v 1.8*)
-    export AQUATERM_PATH=/Applications/AquaTerm.app
-    ;;
-Linux)
-    export TERM=xterm-256color
-    ;;
-esac
-
-export EDITOR="vim"
+export TERM=xterm-256color
+export EDITOR="nvim"
 export PAGER="less"
-export BROWSER="chrome"
+export BROWSER="brave"
 
 ##################
 #   ls colors    #
@@ -68,6 +57,7 @@ source ~/.git-prompt.sh
 #############
 # Prompt    #
 #############
+
 MAGENTA="\[\033[0;35m\]"
 YELLOW="\[\033[0;33m\]"
 BLUE="\[\033[34m\]"
@@ -87,11 +77,11 @@ export PS1=$ORANGE'λ$(
     fi)'$BLUE' \w'$GREEN': '
 
 # https://spin.atomicobject.com/2016/05/28/log-bash-history/
-export PROMPT_COMMAND='if [ "$(id -u)" -ne 0 ]
-    then
-      echo "$(date "+%Y-%m-%d.%H:%M:%S") $(pwd) $(history 1)" \
-      >> ~/.logs/bash-history-$(date "+%Y-%m-%d").log
-    fi'
+#export PROMPT_COMMAND='if [ "$(id -u)" -ne 0 ]
+#    then
+#      echo "$(date "+%Y-%m-%d.%H:%M:%S") $(pwd) $(history 1)" \
+#      >> ~/.logs/bash-history-$(date "+%Y-%m-%d").log
+#    fi'
 
 #############
 #  aliases  #
@@ -120,7 +110,6 @@ alias gs='git status'
 alias ga='git add'
 alias gc='git commit'
 
-
 #############
 # functions #
 #############
@@ -134,6 +123,7 @@ function path () { echo "${PATH}" | tr : '\n'; }
 ##########
 #   bc   #
 ##########
+
 # http://superuser.com/questions/84949/dividing-with-gnus-bc
 export BC_ENV_ARGS="-q $HOME/.bcrc"
 
@@ -172,22 +162,6 @@ esac
 PATH=/usr/local/sbin:$PATH
 PATH=/usr/local/bin:$PATH
 
-####################
-##      Ruby       #
-####################
-#
-#CHRUBY_INSTALL_DIR=/usr/local/opt/chruby/share/chruby
-#CHRUBY_SETUP_SCRIPT=$CHRUBY_INSTALL_DIR/chruby.sh
-#CHRUBY_AUTO_SWITCH_SCRIPT=$CHRUBY_INSTALL_DIR/auto.sh
-#if [[ -f $CHRUBY_SETUP_SCRIPT ]] &&
-#   [[ -s $CHRUBY_SETUP_SCRIPT ]]
-#    then
-#        . $CHRUBY_SETUP_SCRIPT
-#        . $CHRUBY_AUTO_SWITCH_SCRIPT
-#        export RUBIES=(~/.rubies/* /usr)
-#        chruby ruby-2.6.3
-#fi
-#
 ###################
 # psql prettifier #
 ###################
@@ -213,36 +187,14 @@ ppsql() {
   #unset LESS PAGER
 }
 
-################
-## pyenv setup #
-################
-#export PYENV_ROOT="$HOME/.pyenv"
-#export PATH="$PYENV_ROOT/bin:$PATH"
-#eval "$(pyenv init --path)"
-#eval "$(pyenv virtualenv-init -)"
-#
-## pyenv bash completion
-#. ~/.pyenv/completions/pyenv.bash
-#
-###############
-## jenv setup #
-###############
-#export PATH="$HOME/.jenv/bin:$PATH"
-#eval "$(jenv init -)"
-#
-##############
-## nvm setup #
-##############
-#export NVM_DIR="$HOME/.nvm"
-#[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-#[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+####################
+#  Local Settings  #
+####################
 
-#####################
-##  Local Settings  #
-#####################
 #[[ -f ~/.bash_local ]] && . ~/.bash_local
 
 ###############
 # export PATH #
 ###############
+
 export PATH
