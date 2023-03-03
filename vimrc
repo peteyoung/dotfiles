@@ -1,20 +1,7 @@
-set nocompatible
-filetype off
-
-" Set up vundle
-set rtp+=~/.vim/bundle/vundle/
-call vundle#begin()
-Plugin 'gmarik/Vundle.vim'
-
-" Vundle managed bundles
-Plugin 'altercation/vim-colors-solarized'
-Plugin 'vim-ruby/vim-ruby'
-Plugin 'wting/rust.vim'
-Plugin 'elixir-lang/vim-elixir'
-Plugin 'vim-erlang/vim-erlang-runtime'
-Plugin 'derekwyatt/vim-scala'
-
-call vundle#end()
+" Turn off vi compatibility. Can also unset pre .vimrc settings, hence the `if`.
+if $compatible
+  set nocompatible
+endif
 
 syntax on
 
@@ -51,9 +38,6 @@ set smartcase
 
 nmap <Enter> :nohlsearch<Enter>/<BS>
 
-let g:solarized_termtrans = 1
-let g:solarized_termcolors=256
-colorscheme solarized
 set background=dark
 
 " Ctrl-j/k deletes blank line below/above, and Shift-Ctrl-j/k inserts.
@@ -70,7 +54,7 @@ if has("autocmd")
   autocmd FileType python         setlocal ts=4 sts=4 sw=4 expandtab
   autocmd FileType html           setlocal ts=2 sts=2 sw=2 expandtab
   autocmd FileType css            setlocal ts=2 sts=2 sw=2 expandtab
-  autocmd FileType javascript     setlocal ts=4 sts=4 sw=4 expandtab
+  autocmd FileType javascript     setlocal ts=4 sts=4 sw=4 noexpandtab
   autocmd FileType make           setlocal ts=8 sts=8 sw=8 noexpandtab
   autocmd FileType yaml           setlocal ts=2 sts=2 sw=2 expandtab
   autocmd FileType bash,sh,zsh    setlocal ts=2 sts=2 sw=2 expandtab
@@ -110,5 +94,3 @@ endfunction
 " https://stackoverflow.com/questions/2063175/comments-go-to-start-of-line-in-the-insert-mode-in-vim
 " https://stackoverflow.com/questions/18415492/autoindent-is-subset-of-smartindent-in-vim/18415867#18415867
 au! FileType python setl nosmartindent
-
-
