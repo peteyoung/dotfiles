@@ -33,10 +33,24 @@ export TERM=xterm-256color
 # Prompt           #
 ####################
 
+# zsh prompt colors: 
+# See one of the following for color codes:
+# https://sourceforge.net/p/zsh/code/ci/master/tree/Functions/Misc/colors
+# https://opensource.apple.com/source/zsh/zsh-87/zsh/Functions/Misc/colors.auto.html
 autoload -U colors && colors
-autoload -U promptinit &&  promptinit
+
+# Pre-rolled zsh prompts. Use `prompt -p` to see them. `prompt --help` for more info
+# https://sourceforge.net/p/zsh/code/ci/master/tree/Functions/Prompts/promptinit
+# https://opensource.apple.com/source/zsh/zsh-87/zsh/Functions/Prompts/promptinit
+# https://opensource.apple.com/source/zsh/zsh-87/zsh/Functions/Prompts/promptinit.auto.html
+#autoload -U promptinit &&  promptinit
+
+# zsh tab completion
+# https://sourceforge.net/p/zsh/code/ci/master/tree/Completion/compinit
+# https://opensource.apple.com/source/zsh/zsh-87/zsh/Completion/compinit.auto.html
 autoload -U compinit && compinit
-PROMPT="⚡️ %{$fg[yellow]%}"
+
+#PROMPT="⚡️ %{$fg[yellow]%}"
 
 #############
 # functions #
@@ -89,25 +103,22 @@ can() {
 	man "$@"
 }
 
-###################
-#    Homebrew     #
-###################
+#############################
+# git completion and prompt #
+#############################
 
-eval "$(/opt/homebrew/bin/brew shellenv)"
+GIT_PS1_SHOWDIRTYSTATE=true
+zstyle ':completion:*:*:git:*' script ~/.dotfiles/git-completion/git-completion.bash
+fpath=(~/.dotfiles/git-completion/ $fpath)
 
-##################
-# git completion #
-##################
-
-#GIT_PS1_SHOWDIRTYSTATE=true
-#source ~/.dotfiles/git-completion/git-completion.bash
-#source ~/.dotfiles/git-completion/git-prompt.sh
+source ~/.dotfiles/git-completion/git-prompt.sh
+precmd () { __git_ps1 "%n" ":%~ ⚡️ " "|%s" }
 
 ####################
 #  Local Settings  #
 ####################
 
-#[[ -f ~/.bash_local ]] && . ~/.bash_local
+[[ -f ~/.zsh_local ]] && . ~/.zsh_local
 
 ####################
 # Path             #
