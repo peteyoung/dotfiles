@@ -8,6 +8,8 @@ run `~/.dotfiles/makelinks.sh`
 
 git-prompt note
 ---------
-`git-completion.bash`, `git-completion.zsh`, and `git-prompt.sh` can be found at the link below.
+`git-completion.bash`, `git-completion.zsh`, and `git-prompt.sh` can be found in [the git repo](https://github.com/git/git/tree/master/contrib/completion).
 `git` currently doesn't allow sparse checkouts in a submodule, so it's a manual thing.
-[git prompt and completion](https://github.com/git/git/tree/master/contrib/completion)
+
+I use the [`git-completion/fetch-git-completion-files.sh`](https://github.com/peteyoung/dotfiles/blob/master/git-completion/fetch-git-completion-files.sh) script for convenience to download the most recent versions from master.
+
