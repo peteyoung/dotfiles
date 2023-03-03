@@ -3,7 +3,7 @@
 ###############
 
 export TERM=xterm-256color
-export EDITOR="nvim"
+export EDITOR="vim"
 export PAGER="less"
 export BROWSER="brave"
 
@@ -51,8 +51,8 @@ export LESS_TERMCAP_us=$'\E[04;31;5;146m' # begin underline
 ##################
 
 GIT_PS1_SHOWDIRTYSTATE=true
-source ~/.git-completion.bash
-source ~/.git-prompt.sh
+source ~/.dotfiles/git-completion/git-completion.bash
+source ~/.dotfiles/git-completion/git-prompt.sh
 
 #############
 # Prompt    #

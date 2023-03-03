@@ -99,9 +99,9 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 # git completion #
 ##################
 
-GIT_PS1_SHOWDIRTYSTATE=true
-source ~/.git-completion.bash
-source ~/.git-prompt.sh
+#GIT_PS1_SHOWDIRTYSTATE=true
+#source ~/.dotfiles/git-completion/git-completion.bash
+#source ~/.dotfiles/git-completion/git-prompt.sh
 
 ####################
 #  Local Settings  #

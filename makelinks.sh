@@ -11,7 +11,7 @@ cd $dir
 # files to exclude
 #   http://www.bestsolution.at/en/03_Products-nbsp~--nbsp~Projects__13_exclude-nbsp~wildcard-nbsp~matches.html
 #   https://www.gnu.org/software/bash/manual/html_node/Filename-Expansion.html
-GLOBIGNORE=\.git:\.gitignore:*~:*.swp:README.md:dircolors.256dark:makelinks.sh:\.DS_Store
+GLOBIGNORE=\.git:\.gitignore:*~:*.swp:README.md:dircolors.256dark:makelinks.sh:\.DS_Store:git-completion
 
 GLOBIGNORE=$GLOBIGNORE:bcrc:emacs:irbrc
 
