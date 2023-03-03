@@ -1,63 +1,82 @@
 ####################
 # Aliases          #
 ####################
+
 alias src='cd $HOME/src'
-alias ccat='/usr/local/share/python/pygmentize -g'
-alias be='bundle exec'
 alias t='tree -ACr .'
-alias e=$EDITOR
-alias psaux='ps aux | grep -v grep | grep'
-alias ta='tmux attach -t'
-alias ll='ls -lah'
+
+alias hl='history | sed -e '"'"'s/^\[ \\t\]\*//'"'"' | sort -rn | less'
+
+#alias ccat='/usr/local/share/python/pygmentize -g'
+#alias ccat='highlight -O ansi'
+
+#alias ta='tmux attach -t'
+
+#################
+#  git aliases  #
+#################
+
+alias gg='git status -s'
+alias gdiff='git diff --no-ext-diff'
+alias gwdiff='git diff --no-ext-diff --word-diff=color'
+alias gs='git status'
+alias ga='git add'
+alias gc='git commit'
 
 ####################
 # Exports          #
 ####################
-export TERM=xterm-256color
-export UEBER_DIR=$HOME/src/ueber_mac
 
-####################
-# Path             #
-####################
-export PATH=/usr/local/bin:$PATH
+export TERM=xterm-256color
 
 ####################
 # Prompt           #
 ####################
+
 autoload -U colors && colors
 autoload -U promptinit &&  promptinit
 autoload -U compinit && compinit
-PROMPT="%{$fg[red]%}λ%{$fg[yellow]%}: %{$fg[green]%}"
+PROMPT="⚡️ %{$fg[yellow]%}"
 
-####################
-# Prezto Loading   #
-####################
-#setopt EXTENDED_GLOB
-#for rcfile in "${ZDOTDIR:-$HOME}"/.zprezto/runcoms/^README.md(.N); do
-#  ln -s "$rcfile" "${ZDOTDIR:-$HOME}/.${rcfile:t}"
-#done
+#############
+# functions #
+#############
 
-###################
-#      Ruby       #
-###################
+# mkdir and cd into it
+function md () { mkdir -p "$@" && eval cd "\"\$$#\""; }
 
-CHRUBY_SETUP_SCRIPT=/usr/local/opt/chruby/share/chruby/chruby.sh
-if [[ -f $CHRUBY_SETUP_SCRIPT ]]
-    then
-        . $CHRUBY_SETUP_SCRIPT
-        chruby 1.9.3-p429
-fi
+# pretty print $PATH
+function path () { echo "${PATH}" | tr : '\n'; }
 
-RVM_SETUP_SCRIPT=~/.rvm/scripts/rvm
-if [[ -f $RVM_SETUP_SCRIPT ]]
-    then
-        . $RVM_SETUP_SCRIPT
-        PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
-fi
+# function to display all color combos
+function showColors {
+ for STYLE in 0 1 2 3 4 5 6 7; do
+   for FG in 30 31 32 33 34 35 36 37; do
+     for BG in 40 41 42 43 44 45 46 47; do
+       CTRL="\033[${STYLE};${FG};${BG}m"
+       echo -en "${CTRL}"
+       echo -n "${STYLE};${FG};${BG}"
+       echo -en "\033[0m"
+     done
+     echo
+   done
+   echo
+ done
+}
+
+# GUI man page reader on macOS
+case $(uname -s) in
+  Darwin)
+    function gman () {
+      man -t $1 | open -a /System/Applications/Preview.app -f
+    }
+    ;;
+esac
 
 ###################
 # color man pages #
 ###################
+
 can() {
     env \
 	LESS_TERMCAP_mb=$(printf "\e[1;31m") \
@@ -70,22 +89,28 @@ can() {
 	man "$@"
 }
 
-#################################################
-# cd to current folder in focused finder window #
-#################################################
-cdf() {
-    target=`osascript -e 'tell application "Finder" to if (count of Finder windows) > 0 then get POSIX path of (target of front Finder window as text)'`
-    if [ "$target" != "" ]; then
-        cd "$target"; pwd
-    else
-        echo 'No Finder window found' >&2
-    fi
-}
+###################
+#    Homebrew     #
+###################
 
-#[[ -s $HOME/.tmuxinator/scripts/tmuxinator ]] && source $HOME/.tmuxinator/scripts/tmuxinator
+eval "$(/opt/homebrew/bin/brew shellenv)"
 
+##################
+# git completion #
+##################
 
+GIT_PS1_SHOWDIRTYSTATE=true
+source ~/.git-completion.bash
+source ~/.git-prompt.sh
 
-#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-export SDKMAN_DIR="/Users/peteyoung/.sdkman"
-[[ -s "/Users/peteyoung/.sdkman/bin/sdkman-init.sh" ]] && source "/Users/peteyoung/.sdkman/bin/sdkman-init.sh"
+####################
+#  Local Settings  #
+####################
+
+#[[ -f ~/.bash_local ]] && . ~/.bash_local
+
+####################
+# Path             #
+####################
+
+export PATH=/usr/local/bin:$PATH
