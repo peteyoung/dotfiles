@@ -67,6 +67,7 @@ ORANGE="\[\033[38;5;172m\]"
 RED="\[\033[31m\]"
 WHITE="\[\033[0m\]"
 PINK="\[\033[01;35m\]"
+DEFAULT_FG="\[\033[39m\]"
 
 export PS1=$ORANGE'λ$(
     if [[ $(__git_ps1) =~ \*\)$ ]]
@@ -74,7 +75,7 @@ export PS1=$ORANGE'λ$(
     elif [[ $(__git_ps1) =~ \+\)$ ]]
     then echo "'$MAGENTA'"$(__git_ps1 " (%s)")
     else echo "'$CYAN'"$(__git_ps1 " (%s)")
-    fi)'$BLUE' \w'$GREEN': '
+    fi)'$BLUE' \w'$YELLOW': '
 
 # https://spin.atomicobject.com/2016/05/28/log-bash-history/
 #export PROMPT_COMMAND='if [ "$(id -u)" -ne 0 ]
@@ -191,7 +192,7 @@ ppsql() {
 #  Local Settings  #
 ####################
 
-#[[ -f ~/.bash_local ]] && . ~/.bash_local
+[[ -f ~/.bash_local ]] && . ~/.bash_local
 
 ###############
 # export PATH #
