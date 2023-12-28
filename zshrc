@@ -62,6 +62,23 @@ function md () { mkdir -p "$@" && eval cd "\"\$$#\""; }
 # pretty print $PATH
 function path () { echo "${PATH}" | tr : '\n'; }
 
+# show all zsh completions
+function zsh-completions () {
+  for command completion in ${(kv)_comps:#-*(-|-,*)}
+  do
+    printf "%-32s %s\n" $command $completion
+  done | sort
+}
+
+# GUI man page reader on macOS
+case $(uname -s) in
+  Darwin)
+    function gman () {
+      man -t $1 | open -a /System/Applications/Preview.app -f
+    }
+    ;;
+esac
+
 # function to display all color combos
 function showColors {
  for STYLE in 0 1 2 3 4 5 6 7; do
@@ -78,20 +95,11 @@ function showColors {
  done
 }
 
-# GUI man page reader on macOS
-case $(uname -s) in
-  Darwin)
-    function gman () {
-      man -t $1 | open -a /System/Applications/Preview.app -f
-    }
-    ;;
-esac
-
 ###################
 # color man pages #
 ###################
 
-can() {
+cman() {
     env \
 	LESS_TERMCAP_mb=$(printf "\e[1;31m") \
 	LESS_TERMCAP_md=$(printf "\e[1;31m") \
@@ -104,6 +112,12 @@ can() {
 }
 
 #############################
+# zsh completion and prompt #
+#############################
+
+fpath=(~/.dotfiles/zsh-completion/ $fpath)
+
+#############################
 # git completion and prompt #
 #############################
 
@@ -112,16 +126,14 @@ zstyle ':completion:*:*:git:*' script ~/.dotfiles/git-completion/git-completion.
 fpath=(~/.dotfiles/git-completion/ $fpath)
 
 source ~/.dotfiles/git-completion/git-prompt.sh
-precmd () { __git_ps1 "%n" ":%~ ⚡️ " "|%s" }
+
+# 🤡 💩 💀 ☠️  👉 🖖 🖕 💋 👄 👁  🐼 🐒 🙊 🦋 🐙 🍀 🍄 🐚 🌸 🌼 🌝 🌜 ⭐ 🌟 ✨ ⚡ ☄️ 
+# 💥 🔥 🌪  🌈 🌮 🍣 🍥 🥃 🍸 🏆 🎹 🥁 🎸 🚀 🚦 🚥 🕹  🔒 🔓 💢 🔶 🔷 🎲
+
+precmd () { __git_ps1 "%n" ":%~ 🍄 " "|%s" }
 
 ####################
 #  Local Settings  #
 ####################
 
 [[ -f ~/.zsh_local ]] && . ~/.zsh_local
-
-####################
-# Path             #
-####################
-
-export PATH=/usr/local/bin:$PATH
