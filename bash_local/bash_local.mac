@@ -1,0 +1,37 @@
+#############
+#  aliases  #
+#############
+
+alias bb="open -a /Applications/BBEdit.app"
+
+#############
+# Functions #
+#############
+
+# see http://jblevins.org/log/marked-2-command
+function mark {
+  md_file=$1
+  marked_exec="Marked 2"
+  if [ $md_file ]; then
+    open -a "${marked_exec}" $md_file;
+  else
+    open -a "${marked_exec}"
+  fi
+}
+
+
+###################
+#    Homebrew     #
+###################
+
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
+export HOMEBREW_GITHUB_API_TOKEN=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
+
+
+########################
+# Plan 9 for Userspace #
+########################
+#export PLAN9=/opt/plan9
+#export PLAN9
+#export PATH=$PATH:$PLAN9/bin
