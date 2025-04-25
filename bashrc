@@ -51,8 +51,8 @@ export LESS_TERMCAP_us=$'\E[04;31;5;146m' # begin underline
 ##################
 
 GIT_PS1_SHOWDIRTYSTATE=true
-source ~/.dotfiles/git-completion/git-completion.bash
-source ~/.dotfiles/git-completion/git-prompt.sh
+source /opt/homebrew/etc/bash_completion.d/git-completion.bash
+source /opt/homebrew/etc/bash_completion.d/git-prompt.sh
 
 #############
 # Prompt    #
