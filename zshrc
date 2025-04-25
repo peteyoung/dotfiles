@@ -3,25 +3,38 @@
 ####################
 
 alias src='cd $HOME/src'
-alias t='tree -ACr .'
+
+#alias t='tree -ACr .'
 
 alias hl='history | sed -e '"'"'s/^\[ \\t\]\*//'"'"' | sort -rn | less'
 
+# BBEdit
+alias bb='open -a /Applications/BBEdit.app'
+
+# Beyond Compare
+alias bcomp='/Applications/Beyond\ Compare.app/Contents/MacOS/bcomp -nobackups -ro'
+
+# eza: the ls and exa replacement
+alias ls='eza --icons -a --group-directories-first'
+alias t='eza --tree'
+alias tree='eza --tree --long'
+
+# replace cat with pygmentize
 #alias ccat='/usr/local/share/python/pygmentize -g'
 #alias ccat='highlight -O ansi'
 
+# tmux
 #alias ta='tmux attach -t'
 
-#################
-#  git aliases  #
-#################
-
+# git
 alias gg='git status -s'
 alias gdiff='git diff --no-ext-diff'
 alias gwdiff='git diff --no-ext-diff --word-diff=color'
+alias gdt='git difftool'
 alias gs='git status'
 alias ga='git add'
 alias gc='git commit'
+
 
 ####################
 # Exports          #
@@ -37,7 +50,7 @@ export TERM=xterm-256color
 # See one of the following for color codes:
 # https://sourceforge.net/p/zsh/code/ci/master/tree/Functions/Misc/colors
 # https://opensource.apple.com/source/zsh/zsh-87/zsh/Functions/Misc/colors.auto.html
-autoload -U colors && colors
+#####autoload -U colors && colors
 
 # Pre-rolled zsh prompts. Use `prompt -p` to see them. `prompt --help` for more info
 # https://sourceforge.net/p/zsh/code/ci/master/tree/Functions/Prompts/promptinit
@@ -48,7 +61,7 @@ autoload -U colors && colors
 # zsh tab completion
 # https://sourceforge.net/p/zsh/code/ci/master/tree/Completion/compinit
 # https://opensource.apple.com/source/zsh/zsh-87/zsh/Completion/compinit.auto.html
-autoload -U compinit && compinit
+#####autoload -U compinit && compinit
 
 #PROMPT="⚡️ %{$fg[yellow]%}"
 
@@ -121,19 +134,27 @@ fpath=(~/.dotfiles/zsh-completion/ $fpath)
 # git completion and prompt #
 #############################
 
-GIT_PS1_SHOWDIRTYSTATE=true
-zstyle ':completion:*:*:git:*' script ~/.dotfiles/git-completion/git-completion.bash
-fpath=(~/.dotfiles/git-completion/ $fpath)
+#GIT_PS1_SHOWDIRTYSTATE=true
+#zstyle ':completion:*:*:git:*' script ~/.dotfiles/git-completion/git-completion.bash
+#fpath=(~/.dotfiles/git-completion/ $fpath)
 
-source ~/.dotfiles/git-completion/git-prompt.sh
+#source ~/.dotfiles/git-completion/git-prompt.sh
 
-# 🤡 💩 💀 ☠️  👉 🖖 🖕 💋 👄 👁  🐼 🐒 🙊 🦋 🐙 🍀 🍄 🐚 🌸 🌼 🌝 🌜 ⭐ 🌟 ✨ ⚡ ☄️ 
-# 💥 🔥 🌪  🌈 🌮 🍣 🍥 🥃 🍸 🏆 🎹 🥁 🎸 🚀 🚦 🚥 🕹  🔒 🔓 💢 🔶 🔷 🎲
+## 🤡 💩 💀 ☠️  👉 🖖 🖕 💋 👄 👁  🐼 🐒 🙊 🦋 🐙 🍀 🍄 🐚 🌸 🌼 🌝 🌜 ⭐ 🌟 ✨ ⚡ ☄️ 
+## 💥 🔥 🌪  🌈 🌮 🍣 🍥 🥃 🍸 🏆 🎹 🥁 🎸 🚀 🚦 🚥 🕹  🔒 🔓 💢 🔶 🔷 🎲
 
-precmd () { __git_ps1 "%n" ":%~ 🍄 " "|%s" }
+#precmd () { __git_ps1 "%n" ":%~ 🍄 " "|%s" }
 
 ####################
 #  Local Settings  #
 ####################
 
 [[ -f ~/.zsh_local ]] && . ~/.zsh_local
+
+export STM32_PRG_PATH=/Applications/STMicroelectronics/STM32Cube/STM32CubeProgrammer/STM32CubeProgrammer.app/Contents/MacOs/bin
+
+
+####################
+# Starship         #
+####################
+eval "$(starship init zsh)"
