@@ -8,31 +8,6 @@ export PAGER="less"
 export BROWSER="brave"
 
 
-##################
-#   ls colors    #
-##################
-
-# http://geoff.greer.fm/lscolors/
-# https://github.com/seebi/dircolors-solarized
-
-case $(uname) in
-  Darwin*) # os x
-    export CLICOLOR=1
-    alias ls='ls -G'
-
-    # OS X default
-    export LSCOLORS="exfxcxdxbxegedabagacad"
-
-    # get rid of "zsh" message
-    export BASH_SILENCE_DEPRECATION_WARNING=1
-    ;;
-  *)
-    alias ls='ls --color=auto'
-    eval `dircolors ~/.dotfiles/dircolors.256dark`
-    ;;
-esac
-
-
 ##############
 # man colors #
 ##############
