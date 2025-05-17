@@ -3,9 +3,10 @@
 ###############
 
 export TERM=xterm-256color
-export EDITOR="vim"
+export EDITOR="nvim"
 export PAGER="less"
 export BROWSER="brave"
+
 
 ##################
 #   ls colors    #
@@ -15,24 +16,22 @@ export BROWSER="brave"
 # https://github.com/seebi/dircolors-solarized
 
 case $(uname) in
-Darwin*) # os x
+  Darwin*) # os x
     export CLICOLOR=1
     alias ls='ls -G'
 
     # OS X default
     export LSCOLORS="exfxcxdxbxegedabagacad"
 
-    # Linux default (looks terrible solarized)
-    #export LSCOLORS="ExGxBxDxCxEgEdxbxgxcxd"
-
     # get rid of "zsh" message
     export BASH_SILENCE_DEPRECATION_WARNING=1
     ;;
-*)
+  *)
     alias ls='ls --color=auto'
     eval `dircolors ~/.dotfiles/dircolors.256dark`
     ;;
 esac
+
 
 ##############
 # man colors #
@@ -46,59 +45,16 @@ export LESS_TERMCAP_so=$'\E[36m'          #$'\E[38;5;246m'    # begin standout-m
 export LESS_TERMCAP_ue=$'\E[0m'           # end underline
 export LESS_TERMCAP_us=$'\E[04;31;5;146m' # begin underline
 
-##################
-# git completion #
-##################
-
-GIT_PS1_SHOWDIRTYSTATE=true
-source /opt/homebrew/etc/bash_completion.d/git-completion.bash
-source /opt/homebrew/etc/bash_completion.d/git-prompt.sh
-
-#############
-# Prompt    #
-#############
-
-MAGENTA="\[\033[0;35m\]"
-YELLOW="\[\033[0;33m\]"
-BLUE="\[\033[34m\]"
-CYAN="\[\033[0;36m\]"
-GREEN="\[\033[0;32m\]"
-ORANGE="\[\033[38;5;172m\]"
-RED="\[\033[31m\]"
-WHITE="\[\033[0m\]"
-PINK="\[\033[01;35m\]"
-DEFAULT_FG="\[\033[39m\]"
-
-export PS1=$ORANGE'λ$(
-    if [[ $(__git_ps1) =~ \*\)$ ]]
-    then echo "'$YELLOW'"$(__git_ps1 " (%s)")
-    elif [[ $(__git_ps1) =~ \+\)$ ]]
-    then echo "'$MAGENTA'"$(__git_ps1 " (%s)")
-    else echo "'$CYAN'"$(__git_ps1 " (%s)")
-    fi)'$BLUE' \w'$YELLOW': '
-
-# https://spin.atomicobject.com/2016/05/28/log-bash-history/
-#export PROMPT_COMMAND='if [ "$(id -u)" -ne 0 ]
-#    then
-#      echo "$(date "+%Y-%m-%d.%H:%M:%S") $(pwd) $(history 1)" \
-#      >> ~/.logs/bash-history-$(date "+%Y-%m-%d").log
-#    fi'
 
 #############
 #  aliases  #
 #############
 
-alias ll='ls -lah'
-alias la='ls -a'
 alias du='du -h'
 alias df='df -h'
 alias psaux='ps aux | grep -v grep | grep '
-alias ec='emacsclient'
-alias eckill='emacsclient -e "(kill-emacs)"'
-alias remacs='find . -name "*~" -print0 | xargs -0 rm'
-alias linode='ssh peteyoung@173.255.198.155'
 alias hl='history | sed -e '"'"'s/^\[ \\t\]\*//'"'"' | sort -rn | less'
-alias ccat='highlight -O ansi'
+
 
 #################
 #  git aliases  #
@@ -111,15 +67,6 @@ alias gs='git status'
 alias ga='git add'
 alias gc='git commit'
 
-#############
-# functions #
-#############
-
-# mkdir and cd into it
-function md () { mkdir -p "$@" && eval cd "\"\$$#\""; }
-
-# pretty print $PATH
-function path () { echo "${PATH}" | tr : '\n'; }
 
 ##########
 #   bc   #
@@ -128,9 +75,20 @@ function path () { echo "${PATH}" | tr : '\n'; }
 # http://superuser.com/questions/84949/dividing-with-gnus-bc
 export BC_ENV_ARGS="-q $HOME/.bcrc"
 
+
 #############
-#   etc     #
+# functions #
 #############
+
+# mkdir and cd into it
+function md () {
+  mkdir -p "$@" && eval cd "\"\$$#\"";
+}
+
+# pretty print $PATH
+function path () {
+  echo "${PATH}" | tr ':' '\n';
+}
 
 # function to display all color combos
 function showColors {
@@ -148,24 +106,7 @@ function showColors {
  done
 }
 
-case $(uname -s) in
-  Darwin)
-    function gman () {
-      man -t $1 | open -a /System/Applications/Preview.app -f
-    }
-    ;;
-esac
-
-###################
-#    Homebrew     #
-###################
-
-PATH=/usr/local/sbin:$PATH
-PATH=/usr/local/bin:$PATH
-
-###################
-# psql prettifier #
-###################
+# psql prettifier
 ppsql() {
   TEMP_LESS=$LESS
   TEMP_PAGER=$PAGER
@@ -188,11 +129,13 @@ ppsql() {
   #unset LESS PAGER
 }
 
+
 ####################
 #  Local Settings  #
 ####################
 
 [[ -f ~/.bash_local ]] && . ~/.bash_local
+
 
 ###############
 # export PATH #
