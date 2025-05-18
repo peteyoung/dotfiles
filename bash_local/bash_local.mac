@@ -1,9 +1,7 @@
 ###################
 #    Homebrew     #
 ###################
-
 eval "$(/opt/homebrew/bin/brew shellenv)"
-
 export HOMEBREW_GITHUB_API_TOKEN=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
 
 
@@ -30,7 +28,6 @@ fi
 #############
 #  Aliases  #
 #############
-
 alias bb="open -a /Applications/BBEdit.app"
 alias bcomp='/Applications/Beyond\ Compare.app/Contents/MacOS/bcomp -nobackups -ro'
 
@@ -47,7 +44,6 @@ export PATH="$PATH:$GEM_HOME/bin"
 #############
 # Functions #
 #############
-
 # Open markdown files in Marked 2
 #     see http://jblevins.org/log/marked-2-command
 function mark {

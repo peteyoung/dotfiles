@@ -1,7 +1,6 @@
 ###############
 #  variables  #
 ###############
-
 export TERM=xterm-256color
 export EDITOR="nvim"
 export PAGER="less"
@@ -11,7 +10,6 @@ export BROWSER="brave"
 ##############
 # man colors #
 ##############
-
 export LESS_TERMCAP_mb=$'\E[01;31m'       # begin blinking
 export LESS_TERMCAP_md=$'\E[32m'          #$'\E[01;38;5;74m'  # begin bold
 export LESS_TERMCAP_me=$'\E[0m'           # end mode
@@ -24,7 +22,6 @@ export LESS_TERMCAP_us=$'\E[04;31;5;146m' # begin underline
 #############
 #  aliases  #
 #############
-
 alias du='du -h'
 alias df='df -h'
 alias psaux='ps aux | grep -v grep | grep '
@@ -34,7 +31,6 @@ alias hl='history | sed -e '"'"'s/^\[ \\t\]\*//'"'"' | sort -rn | less'
 #################
 #  git aliases  #
 #################
-
 alias gg='git status -s'
 alias gdiff='git diff --no-ext-diff'
 alias gwdiff='git diff --no-ext-diff --word-diff=color'
@@ -46,7 +42,6 @@ alias gc='git commit'
 ##########
 #   bc   #
 ##########
-
 # http://superuser.com/questions/84949/dividing-with-gnus-bc
 export BC_ENV_ARGS="-q $HOME/.bcrc"
 
@@ -54,7 +49,6 @@ export BC_ENV_ARGS="-q $HOME/.bcrc"
 #############
 # functions #
 #############
-
 # mkdir and cd into it
 function md () {
   mkdir -p "$@" && eval cd "\"\$$#\"";
@@ -108,12 +102,10 @@ ppsql() {
 ####################
 #  Local Settings  #
 ####################
-
 [[ -f ~/.bash_local ]] && . ~/.bash_local
 
 
 ###############
 # export PATH #
 ###############
-
 export PATH
